@@ -40,3 +40,7 @@ inoremap <M-l> <Right>
 " 命令模式下的行首尾
 cnoremap <C-a> <home>
 cnoremap <C-e> <end>
+
+" 重新映射tab键
+noremap <tab> <Esc> 
+noremap <s-tab> <tab> 
