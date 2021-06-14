@@ -50,7 +50,6 @@ set smartindent
 set tabstop=4
 set expandtab
 set softtabstop=4
-set foldmethod=indent
 syntax on
 " }}}
 
@@ -63,3 +62,14 @@ set laststatus=2
 set noundofile
 set nobackup
 set noswapfile
+
+" 代码折叠
+"1. manual //手工定义折叠
+"2. indent //用缩进表示折叠
+"3. expr　 //用表达式来定义折叠
+"4. syntax //用语法高亮来定义折叠
+"5. diff   //对没有更改的文本进行折叠
+"6. marker //用标志折叠
+set foldmethod=indent
+"za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
+
