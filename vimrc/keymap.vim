@@ -20,6 +20,9 @@ imap jk <Esc>
 nnoremap H ^
 nnoremap L $
 
+" n noremap b
+nnoremap n b
+
 "nnoremap m i
 "nnoremap k j
 "nnoremap i k
