@@ -42,7 +42,11 @@ endfunction
 
 "
 
-
+" base config
 source ~/vimrc/base.vim
+
+" key map config
 source ~/vimrc/keymap.vim
+
+" windows nvim vim-plug path C:\Users\ddy\AppData\Local\nvim\autoload
 source ~/vimrc/plug.vim
