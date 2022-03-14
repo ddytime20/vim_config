@@ -48,6 +48,8 @@ set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
 
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=7
 
 " 设置 alt 键不映射到菜单栏
 set winaltkeys=no
