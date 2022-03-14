@@ -2,6 +2,7 @@
 
 call plug#begin('D:\0_pluggins')
 
+" theme
 Plug 'morhetz/gruvbox'   "主题
 
 Plug 'preservim/nerdtree'
@@ -18,7 +19,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 call plug#end()
 
-" gruvbox
+" theme gruvbox
 colorscheme gruvbox
 set background=dark    " Setting dark mode
 
