@@ -1,6 +1,7 @@
 " key map config
 
 " Keymap {{{{{{
+" base
 let mapleader=","
 
 inoremap <Up> <Nop>
@@ -20,8 +21,8 @@ imap jk <Esc>
 nnoremap H ^
 nnoremap L $
 
-" n noremap b
-nnoremap n b
+" n normap b
+nnoremap m b
 
 "nnoremap m i
 "nnoremap k j
@@ -43,6 +44,7 @@ inoremap <M-l> <Right>
 " 命令模式下的行首尾
 cnoremap <C-a> <home>
 cnoremap <C-e> <end>
+cnoremap <tab> <Esc> 
 
 " 重新映射tab键
 noremap <tab> <Esc> 
