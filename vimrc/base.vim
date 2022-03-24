@@ -4,7 +4,6 @@
 " Startup {{{
 filetype indent plugin on
 
-
 " vim 文件折叠方式为 marker
 augroup ft_vim
     au!
@@ -12,7 +11,9 @@ augroup ft_vim
 augroup END
 " }}}
 
-
+"------------------------------------------------------------------------
+" 基本配置
+"------------------------------------------------------------------------
 " General {{{
 
 "设置行号
@@ -32,7 +33,10 @@ set ai!
 set mouse=a        
 
 " 关闭声音
-set vb t_vb=       
+set vb t_vb=
+
+" 关闭闪屏
+au GuiEnter * set t_vb=
 
 "显示命令
 set showcmd         
@@ -97,6 +101,7 @@ language messages zh_CN.UTF-8
 " }}}
 
 
+
 " Format {{{
 " 显示格式
 
@@ -107,25 +112,29 @@ language messages zh_CN.UTF-8
 "set listchars=tab:\|\ ,trail:-
 "set listchars=space:-
 
-
+" 自动缩进
 set autoindent
 set smartindent
 set tabstop=4
-set expandtab
 set softtabstop=4
 set shiftwidth=4
+"insert 4 spaces for a tab"
+set expandtab
+
 
 " }}}
 
 " 状态栏
 set laststatus=2
-set statusline=[%F]%y%r%m%*%=[TYPE=%Y][Line:%l/%L,Column:%c][%p%%][%{strftime(\"%d/%m/%y\ -\ %H:%M\")}]
-
+"set statusline=[%F]%y%r%m%*%=[TYPE=%Y][Line:%l/%L,Column:%c][%p%%][%{strftime(\"%d/%m/%y\ -\ %H:%M\")}]
+"set statusline=\ %F%m%r%h%w\ [TYPE=%Y]\ [%{&fileformat}]\ [%{&encoding}]%=[POS=%l/%L, %c]\ [%p%%]\ %{strftime(\"%Y-%m-%d\ %H:%M\")}\
+"set statusline=%1*\%<%.50F\             "显示文件名和文件路径
 
 " 取消文件备份
 set noundofile
 set nobackup
 set noswapfile
+
 
 " 代码折叠
 "1. manual //手工定义折叠
@@ -134,6 +143,8 @@ set noswapfile
 "4. syntax //用语法高亮来定义折叠
 "5. diff   //对没有更改的文本进行折叠
 "6. marker //用标志折叠
+" 默认关闭折叠
+set foldlevelstart=99
 set foldmethod=indent
 "za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
 
