@@ -4,6 +4,9 @@
 " base
 let mapleader=","
 
+"------------------------------------------------------------------------
+" 关掉方向键
+"------------------------------------------------------------------------
 inoremap <Up> <Nop>
 nnoremap <Up> <Nop>
 
@@ -16,13 +19,16 @@ nnoremap <Right> <Nop>
 inoremap <Left> <Nop>
 nnoremap <Left> <Nop>
 
+"------------------------------------------------------------------------
+" 基本映射
+"------------------------------------------------------------------------
 imap jk <Esc>
 
 nnoremap H ^
 nnoremap L $
 
 " n normap b
-nnoremap m b
+" nnoremap m b
 
 "nnoremap m i
 "nnoremap k j
@@ -50,18 +56,33 @@ cnoremap <tab> <Esc>
 noremap <tab> <Esc> 
 noremap <s-tab> <tab> 
 
+"------------------------------------------------------------------------
 " buff
+"------------------------------------------------------------------------
+
 " normal 模式下使用 bl 列出 Buffer 列表
-nnoremap <silent> bl :ls<CR>
+nnoremap <silent> tl :ls<CR>
 
 " normal 模式下使用 bo 打开一个新 Buffer
-nnoremap <silent> bo :enew<CR>
+nnoremap <silent> to :enew<CR>
 
 " normal 模式下使用 bn 切换到下一个 Buffer
-nnoremap <silent> bn :bnext<CR>
+nnoremap <silent> tn :bnext<CR>
 
 " normal 模式下使用 bn 切换到上一个 Buffer
-nnoremap <silent> bp :bprevious<CR>
+nnoremap <silent> tp :bprevious<CR>
 
 " normal 模式下使用 bd 关闭当前 Buffer
-nnoremap <silent> bd :bdelete<CR>
+nnoremap <silent> td :bdelete<CR>
+
+"------------------------------------------------------------------------
+" 自动补全
+"------------------------------------------------------------------------
+inoremap ( ()<ESC>i
+inoremap { {}<ESC>i
+inoremap [ []<ESC>i
+inoremap < <><ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+
+
