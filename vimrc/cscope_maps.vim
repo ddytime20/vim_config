@@ -2,8 +2,6 @@
 " CSCOPE settings for vim           
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" configure url:https://blog.csdn.net/lining0922/article/details/5945255
-"
 " This file contains some boilerplate settings for vim's cscope interface,
 " plus some keyboard mappings that I've found useful.
 "
@@ -25,6 +23,37 @@
 " Jason Duell       jduell@alumni.princeton.edu     2002/3/7
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 根据光标所在位置，提取文件路径中的文件名
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function Get_FileName()
+    let path=expand("<cfile>")
+    echo path
+    let pat='\([^<>?*|"/\\]\+\.\w$\)'
+    let filename = matchstr(path, pat)
+    if(strlen(filename) == 0)
+        echo "can not find file name"
+        return
+    endif
+    return filename
+endf
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope 生成tag，并加载cscope.out
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function Do_CsTag()
+    if(executable('cscope') && has("cscope") )
+        if(has('win32'))
+            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
+        else
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+        endif
+        silent! execute "!cscope -Rb -i cscope.files"
+        if filereadable("cscope.out")
+            execute "cs add cscope.out"
+        endif
+    endif
+endf
 
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim... 
@@ -97,9 +126,10 @@ if has("cscope")
     nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
+    "nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\>f :cs find f <C-R>=Get_FileName()<CR><CR>
+    nmap <C-\>i :cs find i ^<C-R>=Get_FileName()<CR>$<CR>
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
     " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
