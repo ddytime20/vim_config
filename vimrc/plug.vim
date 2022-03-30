@@ -64,6 +64,8 @@ let g:airline_theme='base16_gruvbox_dark_hard'
 " 自动打开
 " autocmd VimEnter * NERDTree
 " nnoremap <leader>n :NERDTreeFocus<CR>
+let NERDTreeWinSize=32
+let NERDTreeWinPos="right"
 nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
