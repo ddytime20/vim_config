@@ -24,13 +24,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctaglist
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 根据光标所在位置，提取文件路径中的文件名
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function Get_FileName()
@@ -60,6 +53,23 @@ function Do_CsTag()
             execute "cs add cscope.out"
         endif
     endif
+endf
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctags 生成tag
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function Do_CTag()
+    if(executable('ctags'))
+        silent! execute "!ctags -R"
+    endif
+endf
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 使用ctags和cscope生成tag方便查看代码和跳转
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function Do_Tag()
+    Do_CTag()
+    Do_CsTag()
 endf
 
 " This tests to see if vim was configured with the '--enable-cscope' option
@@ -93,14 +103,14 @@ if has("cscope")
     "
     " The following maps all invoke one of the following cscope search types:
     "
-    "   's'   symbol: find all references to the token under cursor
-    "   'g'   global: find global definition(s) of the token under cursor
-    "   'c'   calls:  find all calls to the function name under cursor
-    "   't'   text:   find all instances of the text under cursor
+    "   's'   symbol: find all references to the token under cursor(查找符号，即函数名、宏、枚举出现的地方)
+    "   'g'   global: find global definition(s) of the token under cursor(查找函数、宏、枚举等定义的位置,类似ctags)
+    "   'c'   calls:  find all calls to the function name under cursor(查找调用本函数的函数)
+    "   't'   text:   find all instances of the text under cursor(查找指定的字符串)
     "   'e'   egrep:  egrep search for the word under cursor
-    "   'f'   file:   open the filename under cursor
-    "   'i'   includes: find files that include the filename under cursor
-    "   'd'   called: find functions that function under cursor calls
+    "   'f'   file:   open the filename under cursor(查找并打开文件)
+    "   'i'   includes: find files that include the filename under cursor(查找包含本文件的文件)
+    "   'd'   called: find functions that function under cursor calls(查找本函数调用的函数)
     "
     " Below are three sets of the maps: one set that just jumps to your
     " search result, one that splits the existing vim window horizontally and
