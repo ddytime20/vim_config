@@ -33,6 +33,7 @@ nnoremap <leader>q :q<CR>
 " 基本映射
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap jk <Esc>
+nnoremap <C-[> <Esc>
 
 nnoremap H ^
 nnoremap L $
