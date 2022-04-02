@@ -88,10 +88,11 @@ set langmenu=zh_CN.UTF-8
 
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
-" set guifont=Consolas:h13:cANSI
 
 " 设置字体 安装了pownline字体
-set guifont=Powerline_Consolas:h14:cANSI
+if has("win32")
+set guifont=courier_new:h14:cANSI
+endif
 
 
 " 编码格式  
@@ -102,7 +103,9 @@ set langmenu=zh_CN
 let $LANG = 'en_US.UTF-8'
 
 " 设置中文提示
+if has("win32")
 language messages zh_CN.UTF-8
+endif
 
 " }}}
 
@@ -121,14 +124,13 @@ language messages zh_CN.UTF-8
 "set listchars=space:-
 
 " 自动缩进
+set expandtab
 set autoindent
 set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 "insert 4 spaces for a tab"
-set expandtab
-
 
 " }}}
 
@@ -170,3 +172,14 @@ set helplang=cn
 " buff
 " 允许隐藏被修改过的 buffer
 set hidden
+
+
+if empty($TMUX)
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+else
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+endif
