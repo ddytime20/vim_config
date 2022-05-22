@@ -16,8 +16,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " Using a non-default branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" indent line
-Plug 'Yggdroot/indentLine'
+" indent line 插件可能有显示问题，暂不使用
+"Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
