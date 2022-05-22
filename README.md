@@ -17,3 +17,8 @@ linux平台
 
 
 windows平台
+
+## cscope
+linux平台
+
+windows平台
