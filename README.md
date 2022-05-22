@@ -18,8 +18,11 @@ __vimrc主要负责加载base.vim、keymap.vim和plug.vim。分别负责vim基�
 linux平台
 
 windows平台
-- 安装ctags[ctags下载地址](http://ctags.sourceforge.net/index.html)，下载ctags58.zip，将ctags.exe复制到vim/vim82/中，否则报错Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. 
-- 安装taglist[taglist下载地址](http://www.vim.org/scripts/script.php?script_id=273)，下载文件解压会得到doc和plugin两个文件夹，复制到/vim/vimfile中
+- 安装[ctags](http://ctags.sourceforge.net/index.html)，下载ctags58.zip，将ctags.exe复制到vim/vim82/中，否则报错
+Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. 
+
+- 安装[taglist](http://www.vim.org/scripts/script.php?script_id=273)，下载文件解压会得到doc和plugin两个文件夹，复制到/vim/vimfile中
+
 主要参考[gvim中taglist安装](https://blog.csdn.net/gavinr/article/details/6332341)
 
 ## cscope
