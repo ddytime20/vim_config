@@ -1,4 +1,4 @@
-" plug config
+" plug config，vim-plug
 
 call plug#begin('D:\plugins')
 
